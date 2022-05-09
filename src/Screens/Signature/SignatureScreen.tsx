@@ -35,7 +35,7 @@ function SignatureScreen() {
       mediaType: 'photo',
       multiple: false,
     });
-    if (!(image.mime === 'image/png' || image.mime === 'image/jpeg')) {
+    if (image.mime === 'image/png' || image.mime === 'image/jpeg') {
       if (id) {
         emitEvent(id, image.path);
       }
