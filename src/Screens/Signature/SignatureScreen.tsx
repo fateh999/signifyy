@@ -31,9 +31,11 @@ function SignatureScreen() {
   const pickImage = useCallback(async () => {
     const image = await ImageCropPicker.openPicker({
       height: 200,
+      width: 200,
       cropping: true,
       mediaType: 'photo',
       multiple: false,
+      compressImageQuality: 0.5,
     });
     if (image.mime === 'image/png' || image.mime === 'image/jpeg') {
       if (id) {

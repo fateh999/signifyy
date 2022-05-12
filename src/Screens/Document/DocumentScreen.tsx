@@ -154,7 +154,7 @@ function DocumentScreen() {
           right={0}
           left={0}
           textAlign="center"
-          color={theme.colors.white}>
+          color={theme.colors.onSurface}>
           {`${page} / ${numberOfPages}`}
         </Typography>
         <Center flex={1}>
@@ -217,7 +217,11 @@ function DocumentScreen() {
               const aspectRatioPDF = size.width / size.height;
               setPdfHeight(size.height);
               setPdfWidth(size.width);
-              console.log({_numberOfPages, size, h: width / aspectRatioPDF});
+              console.log({
+                _numberOfPages,
+                size,
+                h: width / aspectRatioPDF,
+              });
               setBlockHeight(width / aspectRatioPDF);
               blockHeightRef.current = width / aspectRatioPDF;
             }}

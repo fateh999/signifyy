@@ -121,10 +121,13 @@ function HomeScreen() {
                 onPress={() => navigation.navigate('Document', item)}
                 backgroundColor={theme.colors.surface}>
                 <Block flex={1} alignItems={'center'} flexDirection={'row'}>
-                  <Typography color={theme.colors.onSurface}>
-                    {item.name}
-                  </Typography>
-                  <Block flex={1} />
+                  <Block flex={1}>
+                    <Typography
+                      color={theme.colors.onSurface}
+                      numberOfLines={1}>
+                      {item.name}
+                    </Typography>
+                  </Block>
                   <IconButton
                     name="delete"
                     color={theme.colors.error}
