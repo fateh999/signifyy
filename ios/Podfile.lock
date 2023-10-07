@@ -76,7 +76,7 @@ PODS:
   - libevent (2.1.12)
   - MMKV (1.2.10):
     - MMKVCore (~> 1.2.10)
-  - MMKVCore (1.2.13)
+  - MMKVCore (1.2.16)
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2021.06.28.00-v2):
     - boost
@@ -443,7 +443,7 @@ PODS:
     - React-Core
   - RNVectorIcons (9.1.0):
     - React-Core
-  - SocketRocket (0.6.0)
+  - SocketRocket (0.6.1)
   - TOCropViewController (2.6.1)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -652,7 +652,7 @@ SPEC CHECKSUMS:
   glog: 476ee3e89abb49e07f822b48323c51c57124b572
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   MMKV: 76033b9ace2006623308910a3afcc0e25eba3140
-  MMKVCore: 3388952ded307e41b3ed8a05892736a236ed1b8e
+  MMKVCore: 9cfef4c48c6c46f66226fc2e4634d78490206a48
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 4d8508a426467c48885f1151029bc15fa5d7b3b8
   RCTRequired: 00581111c53531e39e3c6346ef0d2c0cf52a5a37
@@ -693,11 +693,11 @@ SPEC CHECKSUMS:
   RNScreens: 40a2cb40a02a609938137a1e0acfbf8fc9eebf19
   RNShare: 7c4868fdd769705a24692497592ae0b1cfc7419d
   RNVectorIcons: 7923e585eaeb139b9f4531d25a125a1500162a0b
-  SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+  SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   Yoga: 17cd9a50243093b547c1e539c749928dd68152da
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
 PODFILE CHECKSUM: 47fd58870e682e4701f41317b30ca497667700fb
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
