@@ -1,28 +1,28 @@
-import {useRoute, RouteProp, useNavigation} from '@react-navigation/native';
-import React, {useCallback, useLayoutEffect, useRef, useState} from 'react';
-import {StyleSheet} from 'react-native';
-import ImageCropPicker from 'react-native-image-crop-picker';
-import ViewShot from 'react-native-view-shot';
-import {SketchCanvasRef, SketchCanvas} from 'rn-perfect-sketch-canvas';
-import {Block, Center, Container, HStack, Touch, Typography} from 'rnmuilib';
-import {showAlert} from 'src/Components/AlertPopup/AlertPopup';
-import AppBar from 'src/Components/AppBar/AppBar';
-import IconButton from 'src/Components/IconButton/IconButton';
-import {emitEvent} from 'src/Hooks/useEventEmitter';
-import useThemeValue from 'src/Modules/ThemeModule/Hooks/useThemeValue';
-import {RootStackParamList} from 'src/Navigation/StackNavigators/RootStackNavigator';
+import { useRoute, RouteProp, useNavigation } from "@react-navigation/native";
+import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { StyleSheet } from "react-native";
+import ImageCropPicker from "react-native-image-crop-picker";
+import ViewShot from "react-native-view-shot";
+import { SketchCanvasRef, SketchCanvas } from "rn-perfect-sketch-canvas";
+import { Block, Center, Container, HStack, Touch, Typography } from "rnmuilib";
+import { showAlert } from "src/Components/AlertPopup/AlertPopup";
+import AppBar from "src/Components/AppBar/AppBar";
+import IconButton from "src/Components/IconButton/IconButton";
+import { emitEvent } from "src/Hooks/useEventEmitter";
+import useThemeValue from "src/Modules/ThemeModule/Hooks/useThemeValue";
+import { RootStackParamList } from "src/Navigation/StackNavigators/RootStackNavigator";
 
-const COLORS = ['red', 'green', 'blue', 'black'];
+const COLORS = ["red", "green", "blue", "black"];
 
 function SignatureScreen() {
   const canvasRef = useRef<SketchCanvasRef>(null);
   const viewShotRef = useRef<ViewShot>(null);
   const theme = useThemeValue();
   const navigation = useNavigation();
-  const [color, setColor] = useState<string>('black');
+  const [color, setColor] = useState<string>("black");
   const [strokeWidth, setStrokeWidth] = useState<number>(5);
   const route = useRoute<RouteProp<RootStackParamList>>();
-  const {id} = route.params ?? {};
+  const { id } = route.params ?? {};
 
   useLayoutEffect(() => {
     canvasRef.current?.reset();
@@ -33,11 +33,11 @@ function SignatureScreen() {
       height: 200,
       width: 200,
       cropping: true,
-      mediaType: 'photo',
+      mediaType: "photo",
       multiple: false,
       compressImageQuality: 0.5,
     });
-    if (image.mime === 'image/png' || image.mime === 'image/jpeg') {
+    if (image.mime === "image/png" || image.mime === "image/jpeg") {
       if (id) {
         emitEvent(id, image.path);
       }
@@ -45,11 +45,11 @@ function SignatureScreen() {
     } else {
       setTimeout(() => {
         showAlert({
-          title: 'Select Signature',
-          description: 'Please select only png or jpeg files',
+          title: "Select Signature",
+          description: "Please select only png or jpeg files",
           buttonList: [
             {
-              text: 'Ok',
+              text: "Ok",
               backgroundColor: theme.colors.primary,
               onPress: () => {},
             },
@@ -63,9 +63,10 @@ function SignatureScreen() {
     <Container
       backgroundColor={theme.colors.background}
       statusBarBackgroundColor={theme.colors.adaptivePrimary}
-      statusBarStyle={'light-content'}>
+      statusBarStyle={"light-content"}
+    >
       <AppBar
-        title={'Draw Signature'}
+        title={"Draw Signature"}
         back
         backgroundColor={theme.colors.adaptivePrimary}
         color={theme.colors.white}
@@ -135,8 +136,9 @@ function SignatureScreen() {
         <Block
           borderRadius={20}
           elevation={5}
-          backgroundColor={theme.colors.white}>
-          <ViewShot ref={viewShotRef} options={{format: 'png', quality: 1}}>
+          backgroundColor={theme.colors.white}
+        >
+          <ViewShot ref={viewShotRef} options={{ format: "png", quality: 1 }}>
             <SketchCanvas
               ref={canvasRef}
               strokeColor={color}
@@ -152,13 +154,13 @@ function SignatureScreen() {
             size={30 / 1.5}
             name={
               strokeWidth === 3
-                ? 'circle-small'
+                ? "circle-small"
                 : strokeWidth === 5
-                ? 'circle-medium'
-                : 'circle'
+                ? "circle-medium"
+                : "circle"
             }
             onPress={() => {
-              setStrokeWidth(_strokeWidth => {
+              setStrokeWidth((_strokeWidth) => {
                 if (_strokeWidth === 3) {
                   return 5;
                 } else if (_strokeWidth === 5) {
@@ -175,13 +177,14 @@ function SignatureScreen() {
           </Typography>
         </Center>
         <Block flex={2} />
-        {COLORS.map(colorItem => (
+        {COLORS.map((colorItem) => (
           <Center key={colorItem} flex={1}>
             <Touch
               elevation={0}
               onPress={() => {
                 setColor(colorItem);
-              }}>
+              }}
+            >
               <Block
                 height={24}
                 width={24}
@@ -189,7 +192,7 @@ function SignatureScreen() {
                 backgroundColor={colorItem}
                 borderWidth={color === colorItem ? 4 : 2}
                 borderColor={
-                  color === colorItem ? theme.colors.accent : 'transparent'
+                  color === colorItem ? theme.colors.accent : "transparent"
                 }
               />
             </Touch>
