@@ -1,4 +1,38 @@
 {
-  "name": "Signifyy",
-  "displayName": "Signifyy"
+  "expo": {
+    "name": "Signifyy",
+    "slug": "signifyy",
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#00A1E4"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.signifyy.fateh999",
+      "buildNumber": "4004"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#00A1E4"
+      },
+      "package": "com.signifyy.fateh999",
+      "versionCode": 4004
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fb2bd920-3407-45cc-b5aa-03280502a3ef"
+      }
+    },
+    "owner": "fateh999",
+    "plugins": ["with-rn-image-crop-picker"]
+  }
 }
