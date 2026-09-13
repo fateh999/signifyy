@@ -14,7 +14,11 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.signifyy.fateh999",
-      "buildNumber": "4004"
+      "buildNumber": "4004",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Allow $(PRODUCT_NAME) to access your photo library to add a signature image",
+        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access your camera to capture a signature"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -22,7 +26,8 @@
         "backgroundColor": "#00A1E4"
       },
       "package": "com.signifyy.fateh999",
-      "versionCode": 4004
+      "versionCode": 4004,
+      "permissions": ["android.permission.CAMERA"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -32,7 +37,6 @@
         "projectId": "fb2bd920-3407-45cc-b5aa-03280502a3ef"
       }
     },
-    "owner": "fateh999",
-    "plugins": ["with-rn-image-crop-picker"]
+    "owner": "fateh999"
   }
 }
