@@ -60,8 +60,19 @@ const SketchCanvas = forwardRef<SketchCanvasRef, SketchCanvasProps>(
   ({ strokeColor = "black", strokeWidth = 8, containerStyle }, ref) => {
     const [strokes, setStrokes] = useState<Stroke[]>([]);
     const [current, setCurrent] = useState<Point[] | null>(null);
-    // Strokes removed by undo, most recent last. Cleared when a new stroke lands.
-    const undone = useRef<Stroke[]>([]);
+    // Snapshots of the committed stroke list, oldest first, with `index`
+    // pointing one past the live entry. Undo/redo walk the index; committing a
+    // stroke or resetting truncates anything ahead of it and appends. This
+    // mirrors rn-perfect-sketch-canvas' history stack, which also pushed reset
+    // as a snapshot — so an accidental Reset stays recoverable via Undo.
+    const history = useRef<Stroke[][]>([[]]);
+    const index = useRef(1);
+
+    const commit = useCallback((next: Stroke[]) => {
+      history.current = [...history.current.slice(0, index.current), next];
+      index.current = history.current.length;
+      setStrokes(next);
+    }, []);
 
     const startStroke = useCallback((x: number, y: number) => {
       setCurrent([[x, y]]);
@@ -74,11 +85,10 @@ const SketchCanvas = forwardRef<SketchCanvasRef, SketchCanvasProps>(
     const endStroke = useCallback(() => {
       setCurrent((points) => {
         if (points?.length) {
-          undone.current = [];
-          setStrokes((completed) => [
-            ...completed,
+          commit([
+            ...history.current[index.current - 1],
             {
-              id: `${Date.now()}-${completed.length}`,
+              id: `${Date.now()}-${index.current}`,
               points,
               color: strokeColor,
               width: strokeWidth,
@@ -87,38 +97,29 @@ const SketchCanvas = forwardRef<SketchCanvasRef, SketchCanvasProps>(
         }
         return null;
       });
-    }, [strokeColor, strokeWidth]);
+    }, [commit, strokeColor, strokeWidth]);
 
     useImperativeHandle(
       ref,
       () => ({
         reset() {
-          setStrokes([]);
           setCurrent(null);
-          undone.current = [];
+          commit([]);
         },
         undo() {
-          setStrokes((completed) => {
-            if (!completed.length) {
-              return completed;
-            }
-            undone.current = [
-              ...undone.current,
-              completed[completed.length - 1],
-            ];
-            return completed.slice(0, -1);
-          });
+          if (index.current > 1) {
+            index.current -= 1;
+          }
+          setStrokes(history.current[index.current - 1]);
         },
         redo() {
-          const restored = undone.current[undone.current.length - 1];
-          if (!restored) {
-            return;
+          if (index.current < history.current.length) {
+            index.current += 1;
           }
-          undone.current = undone.current.slice(0, -1);
-          setStrokes((completed) => [...completed, restored]);
+          setStrokes(history.current[index.current - 1]);
         },
       }),
-      [],
+      [commit],
     );
 
     const pan = useMemo(

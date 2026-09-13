@@ -39,3 +39,4 @@ yarn-error.*
 
 # agent working files
 .artifacts/
+.argent/
