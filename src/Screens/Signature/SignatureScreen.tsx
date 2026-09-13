@@ -3,11 +3,13 @@ import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { StyleSheet } from "react-native";
 import ImageCropPicker from "react-native-image-crop-picker";
 import ViewShot from "react-native-view-shot";
-import { SketchCanvasRef, SketchCanvas } from "rn-perfect-sketch-canvas";
 import { Block, Center, Container, HStack, Touch, Typography } from "rnmuilib";
 import { showAlert } from "src/Components/AlertPopup/AlertPopup";
 import AppBar from "src/Components/AppBar/AppBar";
 import IconButton from "src/Components/IconButton/IconButton";
+import SketchCanvas, {
+  SketchCanvasRef,
+} from "src/Components/SketchCanvas/SketchCanvas";
 import { emitEvent } from "src/Hooks/useEventEmitter";
 import useThemeValue from "src/Modules/ThemeModule/Hooks/useThemeValue";
 import { RootStackParamList } from "src/Navigation/StackNavigators/RootStackNavigator";

@@ -17,6 +17,7 @@
     "expo": "~51.0.26",
     "expo-dev-client": "~4.0.22",
     "pdf-lib": "^1.17.1",
+    "perfect-freehand": "1.2.2",
     "react": "18.2.0",
     "react-native": "0.74.5",
     "react-native-blob-util": "^0.19.1",
@@ -31,7 +32,6 @@
     "react-native-share": "^7.4.0",
     "react-native-vector-icons": "^10.0.0",
     "react-native-view-shot": "^3.1.2",
-    "rn-perfect-sketch-canvas": "^0.3.0",
     "rnmuilib": "^0.0.7",
     "rxjs": "^7.8.1"
   },
