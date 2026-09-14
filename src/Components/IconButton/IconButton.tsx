@@ -1,23 +1,28 @@
+import {IconProps} from '@react-native-vector-icons/common';
+import {
+  MaterialDesignIcons,
+  MaterialDesignIconsIconName,
+} from '@react-native-vector-icons/material-design-icons';
 import React from 'react';
 import {ImageResizeMode, ImageSourcePropType} from 'react-native';
-import {IconProps} from 'react-native-vector-icons/Icon';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Picture, Touch} from 'rnmuilib';
 import {TouchProps} from 'rnmuilib/dist/Components/Touch';
 
 type IconButtonProps = {
-  type?: 'MaterialCommunityIcons' | 'Image';
+  type?: 'Icon' | 'Image';
   dark?: boolean;
-  name?: string;
+  name?: MaterialDesignIconsIconName;
   source?: ImageSourcePropType;
   resizeMode?: ImageResizeMode;
 };
 
 function IconButton(
-  props: IconButtonProps & Omit<IconProps, 'onPress' | 'name'> & TouchProps,
+  props: IconButtonProps &
+    Omit<IconProps<MaterialDesignIconsIconName>, 'onPress' | 'name'> &
+    TouchProps,
 ) {
   const {
-    type = 'MaterialCommunityIcons',
+    type = 'Icon',
     color,
     size = 28,
     borderRadius = (size * 1.5) / 2,
@@ -28,7 +33,7 @@ function IconButton(
   } = props;
 
   switch (type) {
-    case 'MaterialCommunityIcons': {
+    case 'Icon': {
       return (
         <Touch
           justifyContent={'center'}
@@ -39,7 +44,7 @@ function IconButton(
           elevation={0}
           {...touchProps}>
           {name && (
-            <MaterialCommunityIcons name={name} size={size} color={color} />
+            <MaterialDesignIcons name={name} size={size} color={color} />
           )}
         </Touch>
       );
@@ -79,7 +84,7 @@ function IconButton(
           borderRadius={(size * 1.5) / 2}
           {...touchProps}>
           {name && (
-            <MaterialCommunityIcons name={name} size={size} color={color} />
+            <MaterialDesignIcons name={name} size={size} color={color} />
           )}
         </Touch>
       );

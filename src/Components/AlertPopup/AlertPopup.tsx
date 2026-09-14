@@ -1,4 +1,7 @@
-import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
+import BottomSheet, {
+  BottomSheetBackdrop,
+  BottomSheetBackdropProps,
+} from '@gorhom/bottom-sheet';
 import React, {Fragment, useCallback, useMemo, useRef, useState} from 'react';
 import {Keyboard} from 'react-native';
 import {Block, Center, Touch, Typography, useElevationStyles} from 'rnmuilib';
@@ -26,7 +29,7 @@ function AlertPopup() {
   }, []);
 
   const renderBackdrop = useCallback(
-    props => (
+    (props: BottomSheetBackdropProps) => (
       <BottomSheetBackdrop
         {...props}
         disappearsOnIndex={-1}

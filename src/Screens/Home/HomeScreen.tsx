@@ -1,9 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
+import {types} from '@react-native-documents/picker';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {Canvas, ImageSVG, useSVG} from '@shopify/react-native-skia';
 import React, {useCallback} from 'react';
 import {FlatList, Platform, Pressable, useWindowDimensions} from 'react-native';
-import {types} from 'react-native-document-picker';
 import {Block, Center, Container, Touch, Typography} from 'rnmuilib';
 import svgs from 'src/Assets/svgs';
 import {showAlert} from 'src/Components/AlertPopup/AlertPopup';
@@ -21,6 +21,7 @@ import useThemeValue, {
 } from 'src/Modules/ThemeModule/Hooks/useThemeValue';
 import {RootStackParamList} from 'src/Navigation/StackNavigators/RootStackNavigator';
 import {
+  documentName,
   getTempFilePath,
   guid,
   platFormPath,
@@ -50,7 +51,7 @@ function HomeScreen() {
 
       const document: DOCUMENT_DATA = {
         id: guid(),
-        name: docResponse.name,
+        name: documentName(docResponse.name, docResponse.uri),
         uri: platFormPath(tempFilePath),
         timeStamp: Date.now(),
         status: 'DRAFT',

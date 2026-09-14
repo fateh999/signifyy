@@ -1,45 +1,42 @@
-import {useCallback, useState} from 'react';
-import DocumentPicker, {
+import {
   DocumentPickerOptions,
   DocumentPickerResponse,
-} from 'react-native-document-picker';
-import {SupportedPlatforms} from 'react-native-document-picker/lib/typescript/fileTypes';
+  errorCodes,
+  isErrorWithCode,
+  pick,
+} from '@react-native-documents/picker';
+import {useCallback, useState} from 'react';
 
 function useDocument(
   callback?: (
     documentPickerResponse: Array<DocumentPickerResponse>,
-    options: DocumentPickerOptions<SupportedPlatforms>,
+    options: DocumentPickerOptions,
   ) => void,
 ) {
   const [documents, setDocuments] = useState<Array<DocumentPickerResponse>>([]);
 
-  const pick = useCallback(
-    async (options: DocumentPickerOptions<SupportedPlatforms>) => {
+  const pickDocument = useCallback(
+    async (options: DocumentPickerOptions) => {
       try {
-        const documentPickerResponse = await DocumentPicker.pick(options);
+        const documentPickerResponse = await pick(options);
         callback?.(documentPickerResponse, options);
         setDocuments([...documents, ...documentPickerResponse]);
-      } catch (error) {}
-    },
-    [callback, documents],
-  );
+      } catch (error) {
+        if (
+          isErrorWithCode(error) &&
+          error.code === errorCodes.OPERATION_CANCELED
+        ) {
+          return;
+        }
 
-  const pickMultiple = useCallback(
-    async (options: DocumentPickerOptions<SupportedPlatforms>) => {
-      try {
-        const documentPickerResponse = await DocumentPicker.pickMultiple(
-          options,
-        );
-        callback?.(documentPickerResponse, options);
-        setDocuments([...documents, ...documentPickerResponse]);
-      } catch (error) {}
+        console.error(error);
+      }
     },
     [callback, documents],
   );
 
   return {
-    pick,
-    pickMultiple,
+    pick: pickDocument,
     documents,
   };
 }

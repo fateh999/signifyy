@@ -1,10 +1,11 @@
+import {MaterialDesignIconsIconName} from '@react-native-vector-icons/material-design-icons';
 import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Block, Touch, Center} from 'rnmuilib';
 import useThemeValue from 'src/Modules/ThemeModule/Hooks/useThemeValue';
 import IconButton from '../IconButton/IconButton';
 
-function Fab(props: {onPress: () => void; icon: string}) {
+function Fab(props: {onPress: () => void; icon: MaterialDesignIconsIconName}) {
   const {onPress, icon} = props;
   const theme = useThemeValue();
   const insets = useSafeAreaInsets();

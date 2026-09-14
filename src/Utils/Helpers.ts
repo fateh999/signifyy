@@ -71,6 +71,21 @@ export const platFormPath = (path: string) => {
   return (Platform.OS === 'android' ? 'file://' : '') + path;
 };
 
+/**
+ * The document picker reports `name` as `string | null` — cloud providers and
+ * some content URIs supply no display name. Fall back to the file segment of
+ * the URI so the document list always has something to render.
+ */
+export const documentName = (name: string | null, uri: string) => {
+  if (name) {
+    return name;
+  }
+
+  const fileSegment = uri.split('?')[0].split('/').pop();
+
+  return fileSegment ? decodeURIComponent(fileSegment) : 'Untitled.pdf';
+};
+
 export const sharePDF = async (filePath: string) => {
   try {
     if (Platform.OS === 'android') {
