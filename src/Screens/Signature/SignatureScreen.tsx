@@ -3,7 +3,7 @@ import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { StyleSheet } from "react-native";
 import ImageCropPicker from "react-native-image-crop-picker";
 import ViewShot, { ViewShotRef } from "react-native-view-shot";
-import { Block, Center, Container, HStack, Touch, Typography } from "rnmuilib";
+import { Block, Center, Container, HStack, Touch, Typography } from "src/Components/UI";
 import { showAlert } from "src/Components/AlertPopup/AlertPopup";
 import AppBar from "src/Components/AppBar/AppBar";
 import IconButton from "src/Components/IconButton/IconButton";

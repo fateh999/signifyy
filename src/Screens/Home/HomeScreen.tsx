@@ -4,7 +4,7 @@ import {Canvas, ImageSVG, useSVG} from '@shopify/react-native-skia';
 import React, {useCallback} from 'react';
 import {FlatList, Platform, Pressable, useWindowDimensions} from 'react-native';
 import {types} from 'react-native-document-picker';
-import {Block, Center, Container, Touch, Typography} from 'rnmuilib';
+import {Block, Center, Container, Touch, Typography} from 'src/Components/UI';
 import svgs from 'src/Assets/svgs';
 import {showAlert} from 'src/Components/AlertPopup/AlertPopup';
 import AppBar from 'src/Components/AppBar/AppBar';

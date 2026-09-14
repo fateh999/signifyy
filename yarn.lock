@@ -3568,11 +3568,6 @@ restore-cursor@^2.0.0:
     onetime "^2.0.0"
     signal-exit "^3.0.2"
 
-rnmuilib@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/rnmuilib/-/rnmuilib-0.0.7.tgz#5624606c9f97459ce75efeb90f882b0e6800d0cb"
-  integrity sha512-CXO3LjD+KJQvTPP2wZIW5yDZ1eUgjlxmK3WW48GCSR2o5mEm0U2ZhiyDmJLZ34LvZ76GPNMb3AjSXsq68uBtkA==
-
 rxjs@^7.8.1:
   version "7.8.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.2.tgz#955bc473ed8af11a002a2be52071bf475638607b"

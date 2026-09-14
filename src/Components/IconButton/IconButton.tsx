@@ -2,8 +2,7 @@ import React from 'react';
 import {ImageResizeMode, ImageSourcePropType} from 'react-native';
 import {IconProps} from 'react-native-vector-icons/Icon';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Picture, Touch} from 'rnmuilib';
-import {TouchProps} from 'rnmuilib/dist/Components/Touch';
+import {Picture, Touch, TouchProps} from 'src/Components/UI';
 
 type IconButtonProps = {
   type?: 'MaterialCommunityIcons' | 'Image';

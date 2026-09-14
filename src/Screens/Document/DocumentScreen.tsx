@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/native';
 import React, {useCallback, useMemo, useRef, useState} from 'react';
 import {Image, Platform, StyleSheet, useWindowDimensions} from 'react-native';
-import {Block, Center, Container, Typography} from 'rnmuilib';
+import {Block, Center, Container, Typography} from 'src/Components/UI';
 import AppBar from 'src/Components/AppBar/AppBar';
 import useThemeValue from 'src/Modules/ThemeModule/Hooks/useThemeValue';
 import {RootStackParamList} from 'src/Navigation/StackNavigators/RootStackNavigator';

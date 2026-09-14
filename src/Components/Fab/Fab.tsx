@@ -1,13 +1,11 @@
 import React from 'react';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {Block, Touch, Center} from 'rnmuilib';
+import {Block, Touch, Center} from 'src/Components/UI';
 import useThemeValue from 'src/Modules/ThemeModule/Hooks/useThemeValue';
 import IconButton from '../IconButton/IconButton';
 
 function Fab(props: {onPress: () => void; icon: string}) {
   const {onPress, icon} = props;
   const theme = useThemeValue();
-  const insets = useSafeAreaInsets();
   const shadowColor = theme.colors.onSurface;
 
   return (
@@ -18,7 +16,7 @@ function Fab(props: {onPress: () => void; icon: string}) {
       justifyContent={'center'}
       alignItems={'center'}
       right={20}
-      bottom={10 + insets.bottom}>
+      bottom={10}>
       <Touch
         onPress={onPress}
         backgroundColor={theme.colors.primary}

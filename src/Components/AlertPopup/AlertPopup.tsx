@@ -1,7 +1,7 @@
 import BottomSheet, {BottomSheetBackdrop} from '@gorhom/bottom-sheet';
 import React, {Fragment, useCallback, useMemo, useRef, useState} from 'react';
 import {Keyboard} from 'react-native';
-import {Block, Center, Touch, Typography, useElevationStyles} from 'rnmuilib';
+import {Block, Center, Touch, Typography, useElevationStyles} from 'src/Components/UI';
 import useEventEmitter, {emitEvent} from 'src/Hooks/useEventEmitter';
 import useThemeValue from 'src/Modules/ThemeModule/Hooks/useThemeValue';
 import {ALERT_OPTIONS} from 'src/Utils/Types';
