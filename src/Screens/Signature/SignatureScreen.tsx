@@ -2,7 +2,7 @@ import { useRoute, RouteProp, useNavigation } from "@react-navigation/native";
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { StyleSheet } from "react-native";
 import ImageCropPicker from "react-native-image-crop-picker";
-import ViewShot from "react-native-view-shot";
+import ViewShot, { ViewShotRef } from "react-native-view-shot";
 import { Block, Center, Container, HStack, Touch, Typography } from "rnmuilib";
 import { showAlert } from "src/Components/AlertPopup/AlertPopup";
 import AppBar from "src/Components/AppBar/AppBar";
@@ -18,7 +18,7 @@ const COLORS = ["red", "green", "blue", "black"];
 
 function SignatureScreen() {
   const canvasRef = useRef<SketchCanvasRef>(null);
-  const viewShotRef = useRef<ViewShot>(null);
+  const viewShotRef = useRef<ViewShotRef>(null);
   const theme = useThemeValue();
   const navigation = useNavigation();
   const [color, setColor] = useState<string>("black");
