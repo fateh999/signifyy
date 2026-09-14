@@ -60,6 +60,7 @@ function AlertPopup() {
       handleIndicatorStyle={{backgroundColor: theme.colors.onSurface}}
       backgroundStyle={{backgroundColor: theme.colors.background}}
       enablePanDownToClose
+      enableDynamicSizing={false}
       snapPoints={snapPoints}
       backdropComponent={renderBackdrop}
       onChange={handleSheetChanges}>
