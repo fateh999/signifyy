@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {ColorValue} from 'react-native';
-import {Center, HStack, Typography, VStack} from 'rnmuilib';
+import {Center, HStack, Typography, VStack} from 'src/Components/UI';
 import IconButton from '../IconButton/IconButton';
 import useThemeValue from '../../Modules/ThemeModule/Hooks/useThemeValue';
 import {useNavigation} from '@react-navigation/native';
